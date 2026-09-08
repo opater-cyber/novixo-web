@@ -1,1 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Novixo — AI, Software & Productivity</title>
+
+  <meta
+    name="description"
+    content="Novixo explores artificial intelligence, software and productivity tools that help people work, create and get more done."
+  >
+
+  <style>
+    :root {
+      --bg: #070b14;
+      --surface: #101725;
+      --text: #f5f7fb;
+      --muted: #9ca9bc;
+      --accent: #42d9ff;
+      --accent2: #7c6cff;
+      --border: rgba(255, 255, 255, 0.09);
+      --max: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:
+        radial-gradient(circle at 20% 20%, rgba(66, 217, 255, 0.10), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(124, 108, 255, 0.12), transparent 30%),
+        var(--bg);
+
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      background: rgba(7, 11, 20, 0.75);
+      z-index: 10;
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: 72vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 100px 0 80px;
+    }
+
+    .hero-content {
+      max-width: 860px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      margin-bottom: 30px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), #b1a8ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.18rem;
+      color: var(--muted);
+    }
+
+    .tags {
+      margin-top: 36px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.035);
+      border-radius: 999px;
+      padding: 9px 15px;
+      font-size: 0.88rem;
+      color: #cbd4e2;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      max-width: 720px;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 15px;
+      letter-spacing: -0.035em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      background: rgba(16, 23, 37, 0.72);
+      padding: 30px;
+      border-radius: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .number {
+      display: inline-block;
+      margin-bottom: 24px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .about {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    footer {
+      padding: 45px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 760px) {
+      .nav-links {
+        display: none;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="./">NOVI<span>XO</span></a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container hero-content">
+
+      <div class="eyebrow">AI · Software · Productivity</div>
+
+      <h1>
+        Technology worth
+        <span class="gradient-text">knowing.</span>
+      </h1>
+
+      <p>
+        Novixo explores artificial intelligence, software and productivity
+        tools and turns complex technology into useful, practical content.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Artificial Intelligence</span>
+        <span class="tag">Software</span>
+        <span class="tag">Automation</span>
+        <span class="tag">Productivity</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section>
+    <div class="container">
+
+      <div class="section-title">
+        <h2>What we explore</h2>
+        <p>
+          Useful technology, explained with context and focused on what
+          people can actually do with it.
+        </p>
+      </div>
+
+      <div class="grid">
+
+        <article class="card">
+          <span class="number">01</span>
+          <h3>Artificial Intelligence</h3>
+          <p>
+            New AI products, capabilities and practical applications
+            that are changing the way people work and create.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="number">02</span>
+          <h3>Software</h3>
+          <p>
+            Tools, platforms and features that solve real problems
+            and make digital workflows more effective.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="number">03</span>
+          <h3>Productivity</h3>
+          <p>
+            Better workflows, automation and techniques for getting
+            more value from technology.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="about" id="about">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>About Novixo</h2>
+      </div>
+
+      <p>
+        Novixo is a technology media brand focused on artificial intelligence,
+        software and productivity. We research technology developments,
+        evaluate useful tools and create educational media designed to help
+        people understand and use modern technology more effectively.
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+
+<footer>
+  <div class="container footer-content">
+
+    <div>
+      © 2026 Novixo. All rights reserved.
+    </div>
+
+    <div class="footer-links">
+      <a href="./privacy.html">Privacy Policy</a>
+      <a href="./terms.html">Terms of Service</a>
+      <a href="mailto:YOUR_EMAIL@example.com">Contact</a>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
